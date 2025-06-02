@@ -3,6 +3,7 @@ import Form from '../forms/Form';
 import Loading from '../layout/Loading';
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 import { getRecipes } from '../../services/api';
+import RecipesList from '../lists/RecipesList';
 
 
 // Mocked response for testing purposes
@@ -78,13 +79,22 @@ const RecipesContainer = () => {
     <>
       { isLoading 
         ? <Loading /> 
-        : <Form
-            onInputChange={handleInputChange}
+        : <>
+          <Form 
+            onInputChange={handleInputChange} 
             onSubmit={fetchRecipes}
           />
+          <RecipesList recipes={recipes} /> 
+          </>
       }
     </>
   )
 }
+/*
+<Form
+            onInputChange={handleInputChange}
+            onSubmit={fetchRecipes}
+          />
+           */
 
 export default RecipesContainer;
