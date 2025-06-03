@@ -8,6 +8,7 @@ import RecipesList from '../lists/RecipesList';
 
 // Mocked response for testing purposes
 // This is a mocked response to simulate the API call for testing purposes.
+// (The limit of actual API calls is 100 requests per day for dev users, so we use a mocked response to avoid hitting the limit during development.) 
 const recipesResponse = [
   {
     image:
@@ -41,8 +42,10 @@ const recipesResponse = [
 
 
 
-
+// RecipesContainer component that serves as a container for the recipe list.
+// It manages the state of the recipes, handles input changes, and fetches recipes based on the ingredient input.
 const RecipesContainer = ({ navigation }) => {
+
   // State variables
   const [isLoading, setIsLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
@@ -90,11 +93,5 @@ const RecipesContainer = ({ navigation }) => {
     </>
   )
 }
-/*
-<Form
-            onInputChange={handleInputChange}
-            onSubmit={fetchRecipes}
-          />
-           */
 
 export default RecipesContainer;
