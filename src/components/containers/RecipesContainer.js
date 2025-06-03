@@ -42,7 +42,7 @@ const recipesResponse = [
 
 
 
-const RecipesContainer = () => {
+const RecipesContainer = ({ navigation }) => {
   // State variables
   const [isLoading, setIsLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
@@ -77,14 +77,14 @@ const RecipesContainer = () => {
 
   return (
     <>
+      <Form 
+        onInputChange={handleInputChange} 
+        onSubmit={fetchRecipes}
+      />
       { isLoading 
         ? <Loading /> 
         : <>
-          <Form 
-            onInputChange={handleInputChange} 
-            onSubmit={fetchRecipes}
-          />
-          <RecipesList recipes={recipes} /> 
+            <RecipesList navigation={navigation} recipes={recipes} /> 
           </>
       }
     </>

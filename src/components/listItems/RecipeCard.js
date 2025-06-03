@@ -1,7 +1,7 @@
-import { Card, Text } from "@rneui/themed";
+import { Button, Card, Text } from "@rneui/themed";
 
 const RecipeCard = props => {
-  const { image, label, source, url } = props;
+  const { image, label, source, url, navigation } = props;
 
   return (
     <Card>
@@ -14,6 +14,20 @@ const RecipeCard = props => {
       <Text style={{ marginBottom: 10 }}>
         Source: {source}
       </Text>
+      <Button
+        buttonStyle={{
+          borderRadius: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginBottom: 0,
+        }}
+        title='View'
+        onPress= { () => navigation.navigate('Show', {
+            label,
+            url
+          })
+        } 
+      />
     </Card>
   );
 }
